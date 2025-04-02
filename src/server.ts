@@ -5,7 +5,8 @@ import morgan from 'morgan';
 import 'dotenv/config';
 import cookieParser from 'cookie-parser';
 import databaseConfiguration from './config/db/databaseConfig.config';
-import authRoutes from './controllers/auth/auth.controller';
+import authRoute from './controllers/auth/auth.controller';
+import taskRoute from './controllers/task/task.controller';
 import notFoundMiddleware from './handlers/404handler';
 import errorHandlerMiddleware from './handlers/errorhandler';
 import trackIncomingRequest from './utils/timerMiddleware.timer';
@@ -24,7 +25,8 @@ if (process.env.NODE_ENV as string === 'development') {
     console.log(morgan('dev'));
 }
 // Register routes
-app.use(`/api/${process.env.API_VERSION}/auth`, authRoutes);
+app.use(`/api/${process.env.API_VERSION}/auth`, authRoute);
+app.use(`/api/${process.env.API_VERSION}/task`, taskRoute);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 app.use(trackIncomingRequest);
