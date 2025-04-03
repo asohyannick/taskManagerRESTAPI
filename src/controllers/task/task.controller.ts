@@ -1,9 +1,12 @@
 import express from 'express';
 import { authToken } from '../../middleware/auth/auth.middleware';
+
 import { createTask, fetchTasks, fetchTask, updateTask, removeTask } from '../../services/task/task.service';
+import schemaValidator from '../../helper/schemaValidator';
 const router = express.Router();
 router.post('/create-task',
     authToken,
+    schemaValidator("/task/create-task"),
     createTask
 );
 router.get('/fetch-tasks',
