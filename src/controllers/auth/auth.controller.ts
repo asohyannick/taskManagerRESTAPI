@@ -7,7 +7,7 @@ import {
     updateAccount, 
     removeUserAccount,
     fetchUsers,
-    fetchUser
+    fetchUser,
  } from '../../services/authService/auth.service';
 import { authToken } from '../../middleware/auth/auth.middleware';
 import schemaValidator from '../../helper/schemaValidator';
